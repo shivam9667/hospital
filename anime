@@ -1,0 +1,39 @@
+anime-project/
+│
+├── README.md
+├── src/
+│   ├── main.py
+│   └── anime_data.py
+└── data/
+    └── anime.csv
+# main.py
+from anime_data import AnimeData
+
+def main():
+    # Example usage of AnimeData class
+    anime_data = AnimeData()
+    anime_data.load_data('data/anime.csv')
+    anime_list = anime_data.get_anime_list()
+    print(anime_list)
+
+if __name__ == "__main__":
+    main()
+# anime_data.py
+import pandas as pd
+
+class AnimeData:
+    def __init__(self):
+        self.anime_df = None
+
+    def load_data(self, file_path):
+        self.anime_df = pd.read_csv(file_path)
+
+    def get_anime_list(self):
+        return self.anime_df['Name'].tolist()
+Name,Genre,Episodes
+Naruto,Action,220
+One Piece,Adventure,1000+
+Dragon Ball Z,Action,291
+git add .
+git commit -m "Initial commit"
+git push origin master
